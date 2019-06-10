@@ -100,7 +100,7 @@ extractccdf.LDDPdensity <- function(object)
 ###############################################
 
 library(DPpackage)
-setwd("/Users/KatrinaHartzler")
+setwd("/Users/katrinadevick")
 
 # Simulated data
 
@@ -141,7 +141,7 @@ mcmc <- list(nburn=nburn,
              ndisplay=ndisplay)
 
 # Working directory (please change this accordingly)
-work.dir <- "/Users/KatrinaHartzler"
+work.dir <- "/Users/katrinadevick"
 
 # Fitting the model
 fit1 <- LDDPdensity(y~trt,prior=prior,mcmc=mcmc,state=state,status=TRUE,
@@ -152,44 +152,3 @@ fit1 <- LDDPdensity(y~trt,prior=prior,mcmc=mcmc,state=state,status=TRUE,
 denssam <- extractcdensity.LDDPdensity(fit1)
 cdfsam <- extractccdf.LDDPdensity(fit1)
 
-
-setwd("/Users/KatrinaHartzler")
-load("denreg_final2.RData")
-cond.den <- extractcdensity.LDDPdensity(denreg.final)[[1]]
-save(cond.den,file="denreg_conden.RData")
-integrate.xy(grid.100,cond.den[1,1:100])
-
-
-
-plot(denreg.final)
-
-test <- apply(denssam[[1]],2,mean)
-plot(x=fit1$grid,y=test[1:200])
-lines(x=fit1$grid,y=fit1$densp.m[1,])
-for(i in 1:nsave){
-  lines(x=fit1$grid,y=denssam[[1]][i,1:200])
-}
-
-
-plot(x=fit1$grid,y=test[201:400])
-lines(x=fit1$grid,y=fit1$densp.m[2,])
-for(i in 1:nsave){
-  lines(x=fit1$grid,y=denssam[[1]][i,201:400])
-}
-
-
-
-
-testcdf <- apply(cdfsam[[1]],2,mean)
-plot(x=fit1$grid,y=testcdf[1:200])
-lines(x=fit1$grid,y=fit1$cdfp.m[1,])
-for(i in 1:nsave){
-  lines(x=fit1$grid,y=cdfsam[[1]][i,1:200])
-}
-
-
-plot(x=fit1$grid,y=testcdf[201:400])
-lines(x=fit1$grid,y=fit1$cdfp.m[2,])
-for(i in 1:nsave){
-  lines(x=fit1$grid,y=cdfsam[[1]][i,201:400])
-}
