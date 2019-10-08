@@ -20,7 +20,7 @@ The files density_mediation.R and density_mediation_source.R that can be downloa
 ## Important Note
 
 
-Prior to implementing the code, you must download the file LDDPdensity.f, replace the current LDDPdensity.f file in the DPpackage with this file, and then recompile and load this new DPpackage. You can easily do this using devtools and downloading the package "DPpackage-modified" in this repository with the following code: 
+Prior to implementing our density regression approach, you must download the file LDDPdensity.f, replace the current LDDPdensity.f file in the DPpackage with this file, and compile and load this modified DPpackage. The latest version of DPpackage with the updated LDDPdensity.f file is located in this repository. You can easily install it with the following code: 
 
 
 ```{r, eval=FALSE}
