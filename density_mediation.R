@@ -13,13 +13,16 @@
 ## 1) download the file LDDPdensity.f that is on the GitHub repository with this file (https://github.com/kdevick/densitymediation)
 ## 2) replace the current LDDPdensity.f file in the DPpackage with this file
 ## 3) recompile and load this new DPpackage 
+## ************* OR (the easier option) *************
+## install the modified package (DPpackage-modified) on the density medation Github repository  (https://github.com/kdevick/densitymediation)
+## you can do this with the following code:
 
-
-#### load required libraries 
 library(devtools)
-build("~/DPpackage")
-install("~/DPpackage")
-library(DPpackage, lib.loc = "~/")
+install_github("kdevick/densitymediation/DPpackage-modified")
+library(DPpackage)
+
+
+#### load other required libraries 
 library(sfsmisc)
 library(utils)
 library(survival)
